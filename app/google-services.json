@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "359413020575",
+    "firebase_url": "https://cowiot-default-rtdb.firebaseio.com",
+    "project_id": "cowiot",
+    "storage_bucket": "cowiot.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:359413020575:android:243cece60a73bef0d1afaa",
+        "android_client_info": {
+          "package_name": "com.cow.manager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "359413020575-e3sf88v10rdh4ogrpd9dmnm12nidusqh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cow.manager",
+            "certificate_hash": "6bf32ca28e6f43969c9d944ea8fc5c6ce4b70b21"
+          }
+        },
+        {
+          "client_id": "359413020575-gb74j451e71s3448vj3po0tqvhjvlhjp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB8yWxbCaQLXt6LBbxuwZ11Uvdw4L9tE6o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "359413020575-gb74j451e71s3448vj3po0tqvhjvlhjp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
