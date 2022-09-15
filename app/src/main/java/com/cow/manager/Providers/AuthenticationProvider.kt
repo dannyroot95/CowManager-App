@@ -97,4 +97,15 @@ class AuthenticationProvider {
         return currentUserID
     }
 
+    fun logout(activity: MapsActivity){
+        auth.signOut()
+        val db = TinyDB(activity)
+        db.remove("user")
+        db.remove("location")
+        val intent = Intent(activity, Main::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        activity.startActivity(intent)
+        activity.finish()
+    }
+
 }

@@ -28,6 +28,7 @@ class CowsProvider {
                             override fun onDataChange(snapshotC: DataSnapshot) {
                                 if (snapshotC.exists()){
                                     val cow = snapshotC.getValue(Cows::class.java)!!
+                                    cow.id = key
                                     cows.add(cow)
                                     activity.getCows(cows)
                                 }
