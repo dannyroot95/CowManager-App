@@ -12,6 +12,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.core.app.NotificationManagerCompat
 import com.cow.manager.Adapters.PopupAdapter
 import com.cow.manager.Models.Cows
 import com.cow.manager.Models.Reference
@@ -69,11 +70,14 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             dialog.dismiss()
         }
 
-        menuBinding.btnLogout.setOnClickListener {
+        menuBinding.cvLogout.setOnClickListener {
             AuthenticationProvider().logout(this)
         }
 
-        menuBinding.btnMonitoring.setOnClickListener {
+        menuBinding.cvEnable.setOnClickListener {
+            startStopService()
+        }
+        menuBinding.cvDisable.setOnClickListener {
             startStopService()
         }
 
@@ -163,11 +167,17 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private fun startStopService(){
 
         if(isActiveService(MonitoringService::class.java)){
-            Toast.makeText(this,"Inactivo",Toast.LENGTH_SHORT).show()
             stopService(Intent(this, MonitoringService::class.java))
+            menuBinding.cvEnable.visibility = View.VISIBLE
+            menuBinding.cvDisable.visibility = View.GONE
+            binding.isActive.visibility = View.GONE
+            NotificationManagerCompat.from(this).cancelAll()
+
         }else{
-            Toast.makeText(this,"Activo",Toast.LENGTH_SHORT).show()
             startService(Intent(this, MonitoringService::class.java))
+            menuBinding.cvEnable.visibility = View.GONE
+            menuBinding.cvDisable.visibility = View.VISIBLE
+            binding.isActive.visibility = View.VISIBLE
         }
 
     }
@@ -189,6 +199,21 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onBackPressed() {
     }
 
+    override fun onStart() {
+
+        if(isActiveService(MonitoringService::class.java)){
+            menuBinding.cvEnable.visibility = View.GONE
+            menuBinding.cvDisable.visibility = View.VISIBLE
+            binding.isActive.visibility = View.VISIBLE
+
+        }else{
+            menuBinding.cvEnable.visibility = View.VISIBLE
+            menuBinding.cvDisable.visibility = View.GONE
+            binding.isActive.visibility = View.GONE
+        }
+
+        super.onStart()
+    }
 
 
 }

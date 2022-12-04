@@ -28,35 +28,188 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:orientation="vertical"
+            android:padding="10dp"
             android:layout_marginTop="25dp"
             android:layout_marginBottom="25dp"
             android:layout_height="wrap_content">
 
             <View
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="20dp"
                 android:layout_width="0dp"
                 android:layout_height="0dp"/>
 
-            <Button
+            <com.cow.manager.Utils.PoppinsTextviewRegular
                 android:layout_width="match_parent"
-                android:layout_marginRight="20dp"
-                android:layout_marginLeft="20dp"
-                android:text="Cerrar Sesión"
-                android:id="@+id/btn_logout"
-                android:fontFamily="sans-serif"
+                android:text="Menú Principal"
+                android:textSize="18dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
                 android:layout_height="wrap_content"/>
 
-            <Button
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_profile"
+                android:foreground="?selectableItemBackground"
                 android:layout_width="match_parent"
-                android:id="@+id/btn_monitoring"
-                android:layout_height="wrap_content"
-                android:text="MONITOREAR"
-                android:backgroundTint="@color/teal_700"
-                android:textColor="@color/white"
-                android:layout_gravity="center"
-                android:layout_marginBottom="10dp"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp" />
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/gradient1">
+
+                    <com.cow.manager.Utils.PoppinsTextviewLight
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:textAlignment="center"
+                        android:text="PERFIL"
+                        android:layout_gravity="center"
+                        android:textSize="20dp"
+                        android:textColor="@color/white"
+                        android:layout_height="wrap_content"/>
+
+                    <ImageView
+                        android:layout_width="120dp"
+                        android:layout_marginEnd="5dp"
+                        android:src="@drawable/ic_user"
+                        android:layout_height="150dp"/>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:id="@+id/cv_enable"
+                android:foreground="?selectableItemBackground"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/gradient3">
+
+                    <com.cow.manager.Utils.PoppinsTextviewLight
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:textAlignment="center"
+                        android:text="Activar\nMonitoreo"
+                        android:layout_gravity="center"
+                        android:textSize="20dp"
+                        android:textColor="@color/white"
+                        android:layout_height="wrap_content"/>
+
+                    <ImageView
+                        android:layout_width="120dp"
+                        android:layout_marginEnd="5dp"
+                        android:src="@drawable/icon_cow"
+                        android:layout_height="150dp"/>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:id="@+id/cv_disable"
+                android:visibility="gone"
+                android:foreground="?selectableItemBackground"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/gradient4">
+
+                    <com.cow.manager.Utils.PoppinsTextviewLight
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:textAlignment="center"
+                        android:text="Desactivar\nMonitoreo"
+                        android:layout_gravity="center"
+                        android:textSize="22dp"
+                        android:textColor="@color/white"
+                        android:layout_height="wrap_content"/>
+
+                    <ImageView
+                        android:layout_width="120dp"
+                        android:layout_marginEnd="5dp"
+                        android:src="@drawable/icon_cow"
+                        android:layout_height="150dp"/>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_assistance"
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:foreground="?selectableItemBackground"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/gradient5">
+
+                    <com.cow.manager.Utils.PoppinsTextviewLight
+                        android:layout_width="wrap_content"
+                        android:layout_weight="1"
+                        android:textAlignment="center"
+                        android:text="Mis Registros"
+                        android:layout_gravity="center"
+                        android:textSize="20dp"
+                        android:textColor="@color/white"
+                        android:layout_height="wrap_content"/>
+
+                    <ImageView
+                        android:layout_width="120dp"
+                        android:layout_marginEnd="5dp"
+                        android:src="@drawable/ic_list"
+                        android:layout_height="150dp"/>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_logout"
+                android:foreground="?selectableItemBackground"
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/gradient2">
+
+                    <com.cow.manager.Utils.PoppinsTextviewLight
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:textAlignment="center"
+                        android:text="Cerrar Sesión"
+                        android:layout_gravity="center"
+                        android:textSize="20dp"
+                        android:textColor="@color/white"
+                        android:layout_height="wrap_content"/>
+
+                    <ImageView
+                        android:layout_width="120dp"
+                        android:layout_marginEnd="5dp"
+                        android:src="@drawable/ic_exit"
+                        android:layout_height="150dp"/>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
 
         </LinearLayout>
 

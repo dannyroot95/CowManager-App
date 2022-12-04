@@ -5,11 +5,13 @@ import android.content.Intent
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.core.app.NotificationManagerCompat
 import com.cow.manager.Main
 import com.cow.manager.Models.Reference
 import com.cow.manager.Models.Token
 import com.cow.manager.Models.Users
 import com.cow.manager.UI.MapsActivity
+import com.cow.manager.Utils.MonitoringService
 import com.cow.manager.Utils.TinyDB
 import com.cow.manager.databinding.ActivityMainBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -102,6 +104,8 @@ class AuthenticationProvider {
         val db = TinyDB(activity)
         db.remove("user")
         db.remove("location")
+        activity.stopService(Intent(activity, MonitoringService::class.java))
+        NotificationManagerCompat.from(activity).cancelAll()
         val intent = Intent(activity, Main::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         activity.startActivity(intent)
