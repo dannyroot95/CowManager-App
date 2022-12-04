@@ -21,7 +21,6 @@ class AreaProvider {
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun getAllAreas(context: MapsActivity){
-
         val area : ArrayList<ArrayList<LatLng>> = ArrayList()
         db.collection("area").get()
             .addOnCompleteListener { documents ->

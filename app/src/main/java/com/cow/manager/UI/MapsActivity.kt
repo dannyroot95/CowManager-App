@@ -1,24 +1,22 @@
 package com.cow.manager.UI
 
+import android.app.ActivityManager
 import android.app.Dialog
+import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import android.location.Location
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.cow.manager.Adapters.PopupAdapter
 import com.cow.manager.Models.Cows
 import com.cow.manager.Models.Reference
-import com.cow.manager.Models.Shapes
-import com.cow.manager.Providers.AreaProvider
-import com.cow.manager.Providers.AuthenticationProvider
-import com.cow.manager.Providers.CowsProvider
-import com.cow.manager.Providers.ReferenceProvider
+import com.cow.manager.Utils.MonitoringService
+import com.cow.manager.Providers.*
 import com.cow.manager.R
 import com.cow.manager.Utils.TinyDB
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -29,8 +27,6 @@ import com.cow.manager.databinding.ActivityMapsBinding
 import com.cow.manager.databinding.DialogMenuBinding
 import com.cow.manager.databinding.PopupBinding
 import com.google.android.gms.maps.model.*
-import com.google.android.gms.maps.model.LatLngBounds
-import java.util.Map
 import com.google.android.gms.maps.model.MarkerOptions
 
 
@@ -77,6 +73,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             AuthenticationProvider().logout(this)
         }
 
+        menuBinding.btnMonitoring.setOnClickListener {
+            startStopService()
+        }
+
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -107,7 +107,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 var gender = i.gender
                 val pos = LatLng(i.latitude,i.longitude)
                 val cowID = (i.id).split("cow")
-                //Toast.makeText(this,ctx.toString(),Toast.LENGTH_SHORT).show()
               if(gender == "male"){
                     gender = "Macho"
                     mMap.addMarker(MarkerOptions()
@@ -125,6 +124,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 }
             }
             binding.lnLoader.visibility = View.GONE
+
+
         }else{
             Toast.makeText(this,"Sin data",Toast.LENGTH_SHORT).show()
         }
@@ -132,22 +133,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun getAreas(areas : ArrayList<ArrayList<LatLng>>){
-        areasX = areas
-        isCompleteArea(areasX)
-        val l = LatLng(-12.57519576513514,-69.19911778853673)
-        var ctx = 0
-        var isFar = 0
-        for (i in areasX){
-            if(isPointInPolygon(l,areasX[ctx])){
-                isFar++
-            }
-            ctx++
-        }
-        if(isFar > 0){
-            Toast.makeText(this,"Vaca N°2 esta dentro del perimetro",Toast.LENGTH_SHORT).show()
-        }else{
-            Toast.makeText(this,"Vaca N°2 esta fuera del perimetro",Toast.LENGTH_SHORT).show()
-        }
+    areasX = areas
+    isCompleteArea(areasX)
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -173,47 +160,35 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         }
     }
 
+    private fun startStopService(){
+
+        if(isActiveService(MonitoringService::class.java)){
+            Toast.makeText(this,"Inactivo",Toast.LENGTH_SHORT).show()
+            stopService(Intent(this, MonitoringService::class.java))
+        }else{
+            Toast.makeText(this,"Activo",Toast.LENGTH_SHORT).show()
+            startService(Intent(this, MonitoringService::class.java))
+        }
+
+    }
+
+    private fun isActiveService(myService : Class<MonitoringService>) : Boolean{
+
+        val manager:ActivityManager = getSystemService(Context.ACTIVITY_SERVICE
+        )as ActivityManager
+
+        for(service : ActivityManager.RunningServiceInfo in
+        manager.getRunningServices(Integer.MAX_VALUE)){
+            if(myService.name.equals(service.service.className)){
+                return true
+            }
+        }
+        return false
+    }
+
     override fun onBackPressed() {
     }
 
-    private fun getPolygonCenterPoint(polygonPointsList: ArrayList<LatLng>): LatLng? {
-        var centerLatLng: LatLng? = null
-        val builder: LatLngBounds.Builder = LatLngBounds.Builder()
-        for (i in 0 until polygonPointsList.size) {
-            builder.include(polygonPointsList[i])
-        }
-        val bounds: LatLngBounds = builder.build()
-        centerLatLng = bounds.center
-        return centerLatLng
-    }
 
-    private fun isPointInPolygon(tap: LatLng, vertices: ArrayList<LatLng>): Boolean {
-        var intersectCount = 0
-        for (j in 0 until vertices.size - 1) {
-            if (rayCastIntersect(tap, vertices[j], vertices[j + 1])) {
-                intersectCount++
-            }
-        }
-        return intersectCount % 2 == 1 // odd = inside, even = outside;
-    }
-
-    private fun rayCastIntersect(tap: LatLng, vertA: LatLng, vertB: LatLng): Boolean {
-        val aY = vertA.latitude
-        val bY = vertB.latitude
-        val aX = vertA.longitude
-        val bX = vertB.longitude
-        val pY = tap.latitude
-        val pX = tap.longitude
-        if (aY > pY && bY > pY || aY < pY && bY < pY
-            || aX < pX && bX < pX
-        ) {
-            return false // a and b can't both be above or below pt.y, and a or
-            // b must be east of pt.x
-        }
-        val m = (aY - bY) / (aX - bX) // Rise over run
-        val bee = -aX * m + aY // y = mx + b
-        val x = (pY - bee) / m // algebra is neat!
-        return x > pX
-    }
 
 }
