@@ -10,8 +10,13 @@
         <entry key="..\:/Users/Danny/AndroidStudioProjects/CowManager/app/src/main/res/drawable/ic_menu.xml" value="0.13240740740740742" />
         <entry key="..\:/Users/Danny/AndroidStudioProjects/CowManager/app/src/main/res/layout/activity_main.xml" value="0.16197916666666667" />
         <entry key="..\:/Users/Danny/AndroidStudioProjects/CowManager/app/src/main/res/layout/activity_maps.xml" value="0.25773195876288657" />
+        <entry key="..\:/Users/Danny/AndroidStudioProjects/CowManager/app/src/main/res/layout/activity_profile.xml" value="0.16197916666666667" />
+        <entry key="..\:/Users/Danny/AndroidStudioProjects/CowManager/app/src/main/res/layout/activity_reports.xml" value="0.16197916666666667" />
         <entry key="..\:/Users/Danny/AndroidStudioProjects/CowManager/app/src/main/res/layout/dialog_menu.xml" value="0.2" />
+        <entry key="..\:/Users/Danny/AndroidStudioProjects/CowManager/app/src/main/res/layout/dialog_report.xml" value="0.16197916666666667" />
+        <entry key="..\:/Users/Danny/AndroidStudioProjects/CowManager/app/src/main/res/layout/items_reports.xml" value="0.2958579881656805" />
         <entry key="..\:/Users/Danny/AndroidStudioProjects/CowManager/app/src/main/res/layout/popup.xml" value="0.268" />
+        <entry key="..\:/Users/Danny/AndroidStudioProjects/CowManager/app/src/main/res/layout/spinner.xml" value="0.16197916666666667" />
         <entry key="..\:/Users/Danny/AndroidStudioProjects/CowManager/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
       </map>
     </option>

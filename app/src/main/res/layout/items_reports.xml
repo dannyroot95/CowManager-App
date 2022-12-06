@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:padding="8dp"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:background="#FFFFFF"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="60dp"
+                android:id="@+id/it_iv_gender"
+                android:layout_height="60dp"/>
+
+            <com.cow.manager.Utils.PoppinsTextviewBold
+                android:id="@+id/it_gender"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:textColor="#000"
+                android:text="Género"
+                android:textSize="12dp"
+                android:textStyle="bold"
+                android:layout_height="wrap_content"
+                tools:ignore="HardcodedText" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_marginStart="8dp"
+            android:layout_height="wrap_content">
+
+            <com.cow.manager.Utils.PoppinsTextviewLight
+                android:layout_width="match_parent"
+                android:text="ID"
+                android:id="@+id/it_id"
+                android:layout_height="wrap_content"/>
+
+            <com.cow.manager.Utils.PoppinsTextviewBold
+                android:layout_width="match_parent"
+                android:id="@+id/it_sign"
+                android:textStyle="bold"
+                android:text="Signo"
+                android:layout_height="wrap_content"/>
+
+            <com.cow.manager.Utils.PoppinsTextviewLight
+                android:layout_width="match_parent"
+                android:id="@+id/it_description"
+                android:text="Descripción"
+                android:layout_height="wrap_content"/>
+
+            <com.cow.manager.Utils.PoppinsTextviewLight
+                android:layout_width="match_parent"
+                android:id="@+id/it_date"
+                android:text="Fecha"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

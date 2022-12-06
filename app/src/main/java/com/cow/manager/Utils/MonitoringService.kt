@@ -26,6 +26,12 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import android.app.NotificationManager
+import android.content.ContentResolver
+import android.net.Uri
+import android.media.RingtoneManager
+
+import android.media.Ringtone
+
 
 
 
@@ -119,6 +125,12 @@ class MonitoringService : Service() {
                                                     }else{
                                                         R.drawable.female_cow
                                                     }
+                                                    val alarmSound = Uri.parse(
+                                                        ContentResolver.SCHEME_ANDROID_RESOURCE
+                                                                + "://" + application.packageName + "/raw/cow_sound")
+                                                    val r = RingtoneManager.getRingtone(applicationContext,
+                                                        alarmSound)
+                                                    r.play()
                                                     val notification = Notification
                                                         .Builder(applicationContext,StringsValues.CHANNEL_ID)
                                                         .setContentTitle(StringsValues.ALERT)
@@ -126,7 +138,6 @@ class MonitoringService : Service() {
                                                         .setSmallIcon(R.drawable.icon_cow)
                                                         .setLargeIcon(BitmapFactory.decodeResource(resources,largeIcon))
                                                         .setPriority(NotificationCompat.PRIORITY_MAX)
-                                                        .setDefaults(Notification.DEFAULT_SOUND)
                                                         .setContentIntent(pendingIntent)
                                                         .build()
                                                     with(NotificationManagerCompat.from(applicationContext)) {

@@ -19,6 +19,7 @@ import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.cow.manager.Models.Incidents;
 import com.google.gson.Gson;
 
 public class TinyDB {
@@ -458,8 +459,8 @@ public void putObject(String key, Object obj){
     	putString(key, gson.toJson(obj));
     }
 
-/*
-    public void putListObjectRegister(String key, ArrayList<Registers> objArray){
+
+    public void putListObjectIncidents(String key, ArrayList<Incidents> objArray){
     	checkForNullKey(key);
    	Gson gson = new Gson();
    	ArrayList<String> objStrings = new ArrayList<String>();
@@ -469,21 +470,21 @@ public void putObject(String key, Object obj){
    	putListString(key, objStrings);
     }
 
-    public ArrayList<Registers> getListObjectRegister(String key, Class<Registers> java){
+    public ArrayList<Incidents> getListObjectIncidents(String key, Class<Incidents> java){
         Gson gson = new Gson();
 
         ArrayList<String> objStrings = getListString(key);
-        ArrayList<Registers> objects =  new ArrayList<Registers>();
+        ArrayList<Incidents> objects =  new ArrayList<Incidents>();
 
         for(String jObjString : objStrings){
-            Registers value  = gson.fromJson(jObjString,  Registers.class);
+            Incidents value  = gson.fromJson(jObjString,  Incidents.class);
             objects.add(value);
         }
         return objects;
     }
 
 
- */
+
     /**
      * Remove SharedPreferences item with 'key'
      * @param key SharedPreferences key

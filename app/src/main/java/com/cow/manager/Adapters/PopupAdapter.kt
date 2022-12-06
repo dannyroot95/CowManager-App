@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.Toast
 import com.cow.manager.Models.Cows
 import com.cow.manager.R
+import com.cow.manager.UI.MapsActivity
 import com.cow.manager.databinding.PopupBinding
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.Marker
@@ -30,6 +31,11 @@ class PopupAdapter(var context : Context, var cow : Cows) : GoogleMap.InfoWindow
             binding.imgGender.setImageResource(R.drawable.female_cow)
         }else{
             binding.imgGender.setImageResource(R.drawable.male_cow)
+        }
+
+        binding.btnRequest.setOnClickListener {
+            var activity = MapsActivity()
+            Toast.makeText(activity,"Probando",Toast.LENGTH_SHORT).show()
         }
 
     }
