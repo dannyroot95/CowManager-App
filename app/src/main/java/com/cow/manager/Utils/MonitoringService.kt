@@ -31,11 +31,6 @@ import android.net.Uri
 import android.media.RingtoneManager
 
 import android.media.Ringtone
-
-
-
-
-
 class MonitoringService : Service() {
 
     val dr : DatabaseReference = Firebase.database.reference

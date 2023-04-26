@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="allSigns">
-        <item>MASTITIS</item>
-        <item>BABESIOSIS</item>
-        <item>BRUCELOSIS</item>
-        <item>FIEBRE AFTOSA</item>
-        <item>TUBERCULOSIS</item>
-        <item>CLOSTRIDIOSIS</item>
-        <item>LEPTOSPIROSIS</item>
-        <item>PROBLEMAS EN LAS PEZUÑAS</item>
-        <item>PARÁSITOS</item>
-    </string-array>
+<string-array name="allSigns">
+    <item>MASTITIS</item>
+    <item>BABESIOSIS</item>
+    <item>BRUCELOSIS</item>
+    <item>FIEBRE AFTOSA</item>
+    <item>TUBERCULOSIS</item>
+    <item>CLOSTRIDIOSIS</item>
+    <item>LEPTOSPIROSIS</item>
+    <item>PROBLEMAS EN LAS PEZUÑAS</item>
+    <item>PARÁSITOS</item>
+</string-array>
 </resources>
